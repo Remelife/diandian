@@ -8,4 +8,8 @@
     <string name="login_find_password">Find Password</string>
     <string name="login_login">Login</string>
     <string name="view_all_comments">View all comments</string>
+    <string name="register_username">Username</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Confirm Password</string>
+    <string name="register_phone">Phone</string>
 </resources>
