@@ -30,17 +30,19 @@ public class UserLab {
     public void login(String username, String password, Handler handler) {
         Retrofit retrofit = RetrofitClient.getInstance();
         UserApi api = retrofit.create(UserApi.class);
-        Call<cn.edu.scujcc.diandian.Response> call = api.login(username, password);
-        call.enqueue(new Callback<cn.edu.scujcc.diandian.Response>() {
+        Call<Result> call = api.login(username, password);
+        call.enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<cn.edu.scujcc.diandian.Response> call,
-                                   Response<cn.edu.scujcc.diandian.Response> response) {
+            public void onResponse(Call<Result> call,
+                                   Response<Result> response) {
                 Log.d(TAG, "登录成功返回数据");
                 boolean loginSuccess = false;
                 if (response.body() != null) {
-                    if (response.body().getStatus() == cn.edu.scujcc.diandian.Response.STATUS_OK){
+                    Result result = response.body();
+                    if(result.getStatus() == 1){
                         //登录成功
                         loginSuccess = true;
+
                     }
                 }
                 if (loginSuccess) {
@@ -55,7 +57,7 @@ public class UserLab {
             }
 
             @Override
-            public void onFailure(Call<cn.edu.scujcc.diandian.Response> call, Throwable t) {
+            public void onFailure(Call<Result> call, Throwable t) {
                 Log.e(TAG, "登录失败！", t);
                 Message msg = new Message();
                 msg.what = USER_LOGIN_NET_ERROR;
@@ -63,4 +65,9 @@ public class UserLab {
             }
         });
     }
+
+
+
+
+
 }

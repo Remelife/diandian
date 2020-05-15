@@ -1,8 +1,8 @@
 package cn.edu.scujcc.diandian;
 
-public class Response {
-    public final static int STATUS_OK = 1;
-    public final static int STATUS_ERROR = 0;
+public class Result {
+    //public final static int STATUS_OK = 1;
+    //public final static int STATUS_ERROR = 0;
 
     private int status;
     private String message;

@@ -6,5 +6,9 @@ import retrofit2.http.Path;
 
 public interface UserApi {
     @GET("/user/login/{username}/{password}")
-    Call<Response> login(@Path("username") String username, @Path("password") String password);
+
+    Call<Result> login(@Path("username") String username, @Path("password") String password);
+
+
+
 }

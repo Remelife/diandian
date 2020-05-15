@@ -3,10 +3,12 @@ package cn.edu.scujcc.diandian;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -73,5 +75,18 @@ public class LoginActivity extends AppCompatActivity {
             //TODO 调用Retrofit
             lab.login(u, p, handler);
         });
+
+
+
+        //跳转注册页面
+        Button registerButton = findViewById(R.id.register_button);
+        registerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+            startActivity(intent);
+        });
+
+
+
+
     }
 }
