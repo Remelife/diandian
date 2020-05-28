@@ -173,7 +173,7 @@ public class PlayerActivity extends AppCompatActivity {
             }
         }
         //1、获取最新的热门评论
-        lab.getHoytComments(currentChannel.getId(), handler);
+        lab.getHotComments(currentChannel.getId(), handler);
     }
 
     /*

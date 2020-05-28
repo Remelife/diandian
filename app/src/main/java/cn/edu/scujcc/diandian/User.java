@@ -1,5 +1,7 @@
 package cn.edu.scujcc.diandian;
 
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class User {
@@ -41,23 +43,26 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public Date getBirthday() {
-        return birthday;
-    }
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
     public String getLastIp() {
         return lastIp;
     }
     public void setLastIp(String lastIp) {
         this.lastIp = lastIp;
+    }
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
     @Override
     public String toString() {

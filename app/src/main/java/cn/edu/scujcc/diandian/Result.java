@@ -1,12 +1,12 @@
 package cn.edu.scujcc.diandian;
 
-public class Result {
-    //public final static int STATUS_OK = 1;
-    //public final static int STATUS_ERROR = 0;
+public class Result<T> {
+    public final static int STATUS_OK = 1;
+    public final static int STATUS_ERROR = 0;
 
     private int status;
     private String message;
-    private User data;
+    private T data;
 
 
     public int getStatus() {
@@ -21,10 +21,20 @@ public class Result {
     public void setMessage(String message) {
         this.message = message;
     }
-    public User getData() {
+    public T getData() {
         return data;
     }
-    public void setData(User data) {
+    public void setData(T data) {
         this.data = data;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "status=" + status +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

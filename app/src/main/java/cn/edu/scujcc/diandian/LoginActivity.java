@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,6 +19,9 @@ import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
+    private String user;
+    private MyPreference prefs = MyPreference.getInstance();
+    private final static String TAG = "DianDian";
     private UserLab lab = UserLab.getInstance();
     private Handler handler = new Handler() {
         @Override
@@ -25,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             if (null != msg) {
                 switch (msg.what) {
                     case UserLab.USER_LOGIN_SUCCESS:
-                        loginSuccess();
+                        loginSuccess(msg.obj);
                         break;
                     case UserLab.USER_LOGIN_PASSWORD_ERROR:
                         loginPasswordError();
@@ -45,11 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void loginSuccess() {
+    private void loginSuccess(Object token) {
         Toast.makeText(LoginActivity.this,
                 "登录成功！",
                 Toast.LENGTH_LONG)
                 .show();
+        Log.d(TAG ,"服务器返回的token是：" + token);
+        prefs.saveUser(user, (String) token);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -70,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             TextInputLayout username = findViewById(R.id.login_username);
             TextInputLayout password = findViewById(R.id.login_password);
-            String u = username.getEditText().getText().toString();
+            user = username.getEditText().getText().toString();
             String p = password.getEditText().getText().toString();
-            //TODO 调用Retrofit
-            lab.login(u, p, handler);
+            // 调用Retrofit
+            lab.login(user, p, handler);
         });
 
 
@@ -86,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
+        prefs.setup(getApplicationContext());
 
     }
 }
