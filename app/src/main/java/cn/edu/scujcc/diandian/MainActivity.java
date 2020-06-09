@@ -63,4 +63,8 @@ public class MainActivity extends AppCompatActivity implements ChannelRvAdapter.
     }
 
 
+    @Override
+    public void onChannelClick(int position) {
+
+    }
 }
